@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+/* currently assumes cdn json api and basic auth */
 const uri = process.env.CDN_URI
 const user = process.env.CDN_USER
 const password = process.env.CDN_PASSWORD
