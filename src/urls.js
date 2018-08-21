@@ -29,9 +29,9 @@ module.exports = (request, response) => {
   for (let z = params.minz; z <= params.maxz; z++) {
     grid.forEachTileCoord(params.extent, z, tileCoord => {
       const coord = [tileCoord[0], tileCoord[1], - tileCoord[2] - 1]
-      invert(coord, templates.tms, tms)
-      xyz(coord, templates.wmts, wmts)
-      xyz(coord, templates.xyz, xyz)
+      invert(coord, templates.tms, urls)
+      xyz(coord, templates.wmts, urls)
+      xyz(coord, templates.xyz, urls)
     })
   }
   invalidate(urls, response)
