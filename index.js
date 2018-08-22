@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const urls = require('./urls')
+const urls = require('./src/urls')
 
 const app = express()
 
