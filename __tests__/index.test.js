@@ -24,6 +24,7 @@ test('integration test', done => {
     dataType: 'json',
     data: JSON.stringify(request),
     success: response => {
+      console.log(JSON.stringify(response, null, 2))
       const urls = response.urls
       expect(urls.length).toBe(18)
       expect($.inArray('https://maps.nyc.gov/tms/1.0.0/carto/basemap/17/38598/81782.png8', urls) > -1).toBe(true)

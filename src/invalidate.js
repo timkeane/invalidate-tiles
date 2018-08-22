@@ -4,14 +4,20 @@ require('dotenv').config()
 const uri = process.env.CDN_URI
 const user = process.env.CDN_USER
 const password = process.env.CDN_PASSWORD
+const proxy = process.env.CDN_PROXY
 const json = process.env.CDN_POST_DATA
 const urlProp = process.env.CDN_URL_PROP_NAME
 const headers = {'Content-Type': 'application/json'}
 
 const Client = require('node-rest-client').Client
 
+const options = {user: user, password: password}
+if (proxy) {
+  options.proxy = JSON.parse(proxy)
+}
+
 module.exports = (urls, response) => {
-  const client = new Client({user: user, password: password})
+  const client = new Client(options)
   const data = JSON.parse(json)
   data[urlProp] = urls
   client.post(uri, {headers: headers, data: data}, (cdnData, cdnResponse) => {
