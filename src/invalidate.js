@@ -17,6 +17,7 @@ module.exports = (urls, response) => {
   client.post(uri, {headers: headers, data: data}, (cdnData, cdnResponse) => {
     const status = cdnResponse.statusCode
     if (status === 201) {
+      cdnData.urls = urls
       response.json(cdnData)
     } else if (status === 400) {
       response.status(status).json(cdnData)
